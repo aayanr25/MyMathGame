@@ -20,11 +20,14 @@ public class MathGameUI {
         String p1Name = scan.nextLine();
         System.out.print("Enter player 2's name: ");
         String p2Name = scan.nextLine();
+        System.out.print("Enter player 3's name: ");
+        String p3Name = scan.nextLine();
 
         // initialize Player objects and MathGame object
         Player p1 = new Player(p1Name);
         Player p2 = new Player(p2Name);
-        game = new MathGame(p1, p2, scan);
+        Player p3 = new Player(p3Name);
+        game = new MathGame(p1, p2, p3, scan);
     }
 
     private void mainMenu() {
@@ -40,6 +43,11 @@ public class MathGameUI {
                 System.out.println("The winner was " + game.getWinner().getName());   // print winner's name
                 System.out.println("with a score of " + game.getWinner().getScore()); // print winner's score
             }
+            System.out.println(game.getWinner().getName() + " has won " + game.getStreak() + " games in a row!");
+            if (game.getNewHigh()) {
+                System.out.println("New high score!");
+            }
+            System.out.println("High Score: " + game.getHighScore());
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             System.out.print("Want to play another round? y/n: ");
             playAgain = scan.nextLine().toLowerCase(); // take input and covert to lowercase
